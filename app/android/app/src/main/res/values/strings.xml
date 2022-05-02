@@ -9,4 +9,17 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+
+    <string name="personalLogin">Email n\' Paswword</string>
+    <string name="register">REGISTER</string>
+    <string name="login">LOGIN</string>
+
+    <string name="ConfirmEmail">Please confirm your email in your inbox.</string>
+    <string name="LoginSuccess">Successfully logged in!.</string>
+    <string name="AboutApp">About app.!</string>
+
 </resources>
