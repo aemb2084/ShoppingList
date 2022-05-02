@@ -1,5 +1,6 @@
 package com.example.shoppinglist.RegisterLogin.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,13 +10,10 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import com.example.shoppinglist.R
+import com.example.shoppinglist.SoppingListApp.ShoppingListActivity
 import com.example.shoppinglist.databinding.RegisterLoginFragmentBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 class RegisterLoginFragment : Fragment(), View.OnClickListener {
 
@@ -23,7 +21,6 @@ class RegisterLoginFragment : Fragment(), View.OnClickListener {
     val viewModel: RegisterLoginViewModel by viewModels()
     private var _binding: RegisterLoginFragmentBinding? = null
     private val binding get() = _binding!!
-    // private var navController: NavController? = null
     private lateinit var auth: FirebaseAuth
 
 
@@ -71,24 +68,13 @@ class RegisterLoginFragment : Fragment(), View.OnClickListener {
             Toast.makeText(context, getString(R.string.LoginSuccess), Toast.LENGTH_LONG).show()
             val bundle = bundleOf("user" to login.user)
             // navController!!.navigate(R.id.action_loginFragment_to_mainFragment, bundle)
+            requireActivity().run {
+                startActivity(Intent(this, ShoppingListActivity::class.java))
+                finish()
+            }
             // TODO -> Gestionar el cambio de actividad.
         } else {
             Toast.makeText(context, "Error: ${login.detail}", Toast.LENGTH_LONG).show()
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        auth = Firebase.auth
-        if (auth.currentUser != null) {
-            val user = user(
-                auth.currentUser?.displayName.toString(),
-                auth.currentUser?.email.toString(),
-                auth.currentUser?.uid.toString()
-            )
-            val bundle = bundleOf("user" to user)
-            // navController!!.navigate(R.id.action_loginFragment_to_mainFragment, bundle)
-            //TODO -> Gestionar el cambio de actividad.
         }
     }
 

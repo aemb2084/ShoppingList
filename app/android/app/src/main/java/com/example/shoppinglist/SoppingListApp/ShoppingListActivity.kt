@@ -12,7 +12,7 @@ import android.view.MenuItem
 import com.example.shoppinglist.R
 import com.example.shoppinglist.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class ShoppingListActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
