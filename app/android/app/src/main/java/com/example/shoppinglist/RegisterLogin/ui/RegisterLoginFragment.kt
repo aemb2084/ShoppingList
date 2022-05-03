@@ -66,13 +66,10 @@ class RegisterLoginFragment : Fragment(), View.OnClickListener {
     private fun loginFeedback(login: loginStatus){
         if (login.status){
             Toast.makeText(context, getString(R.string.LoginSuccess), Toast.LENGTH_LONG).show()
-            val bundle = bundleOf("user" to login.user)
-            // navController!!.navigate(R.id.action_loginFragment_to_mainFragment, bundle)
             requireActivity().run {
                 startActivity(Intent(this, ShoppingListActivity::class.java))
                 finish()
             }
-            // TODO -> Gestionar el cambio de actividad.
         } else {
             Toast.makeText(context, "Error: ${login.detail}", Toast.LENGTH_LONG).show()
         }
@@ -83,7 +80,6 @@ class RegisterLoginFragment : Fragment(), View.OnClickListener {
 
         binding.login.setOnClickListener (this)
         binding.signup.setOnClickListener(this)
-        // navController = Navigation.findNavController(view)
 
     }
 

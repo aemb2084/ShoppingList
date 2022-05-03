@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_cart"
+        android:icon="@drawable/ic_baseline_local_grocery_store_24"
+        android:title="@string/shopping_cart" />
+
+    <item
+        android:id="@+id/navigation_list"
+        android:icon="@drawable/ic_baseline_list_24"
+        android:title="@string/item_list" />
+
+    <item
+        android:id="@+id/navigation_historical"
+        android:icon="@drawable/ic_baseline_show_chart_24"
+        android:title="@string/historical" />
+
+</menu>
