@@ -22,9 +22,11 @@
     <string name="LoginSuccess">Successfully logged in!.</string>
     <string name="AboutApp">About app.!</string>
     <string name="title_activity_shopping_list">ShoppingListActivity</string>
-    <string name="shopping_cart">CART</string>
-    <string name="item_list">LIST</string>
-    <string name="historical">HISTORICAL</string>
+    <string name="shopping_cart">Cart</string>
+    <string name="item_list">Lists</string>
+    <string name="historical">Historical</string>
     <string name="signout">Signout</string>
+    <string name="products">Products</string>
+    <string name="add_product">Add Product</string>
 
 </resources>

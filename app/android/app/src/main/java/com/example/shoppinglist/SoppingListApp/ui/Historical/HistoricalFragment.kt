@@ -1,4 +1,4 @@
-package com.example.shoppinglist.SoppingListApp.ui.list
+package com.example.shoppinglist.SoppingListApp.ui.Historical
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.shoppinglist.databinding.FragmentListBinding
+import com.example.shoppinglist.databinding.FragmentHistoricalBinding
 
-class ListFragment : Fragment() {
+class HistoricalFragment : Fragment() {
 
-    private var _binding: FragmentListBinding? = null
+    private var _binding: FragmentHistoricalBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,14 +22,14 @@ class ListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(ListViewModel::class.java)
+        val notificationsViewModel =
+            ViewModelProvider(this).get(HistoricalViewModel::class.java)
 
-        _binding = FragmentListBinding.inflate(inflater, container, false)
+        _binding = FragmentHistoricalBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
+        val textView: TextView = binding.textHistorical
+        notificationsViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root

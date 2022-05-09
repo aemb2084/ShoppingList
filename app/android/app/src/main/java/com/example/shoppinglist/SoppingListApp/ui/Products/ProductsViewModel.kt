@@ -1,13 +1,14 @@
-package com.example.shoppinglist.SoppingListApp.ui.notifications
+package com.example.shoppinglist.SoppingListApp.ui.Products
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HistoricalViewModel : ViewModel() {
+class ProductsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is Historical Fragment"
+        value = "This is Products Fragment"
     }
     val text: LiveData<String> = _text
+
 }
