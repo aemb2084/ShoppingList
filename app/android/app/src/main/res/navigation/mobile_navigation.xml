@@ -26,5 +26,14 @@
         android:id="@+id/navigation_products"
         android:name="com.example.shoppinglist.SoppingListApp.ui.Products.ProductsFragment"
         android:label="@string/products"
-        tools:layout="@layout/fragment_products" />
+        tools:layout="@layout/fragment_products" >
+        <action
+            android:id="@+id/action_navigation_products_to_createProductFragment"
+            app:destination="@id/createProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createProductFragment"
+        android:name="com.example.shoppinglist.SoppingListApp.ui.Products.CreateProduct.CreateProductFragment"
+        android:label="fragment_create_product"
+        tools:layout="@layout/fragment_create_product" />
 </navigation>

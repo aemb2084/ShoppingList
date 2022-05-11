@@ -6,23 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.example.shoppinglist.SoppingListApp.ui.Historical.HistoricalViewModel
 import com.example.shoppinglist.databinding.FragmentListBinding
 
 class ListFragment : Fragment() {
 
     private var _binding: FragmentListBinding? = null
+    val viewModel by viewModels<HistoricalViewModel>()
     private val binding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
-        val dashboardViewModel = ViewModelProvider(this).get(ListViewModel::class.java)
-
         _binding = FragmentListBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
+        val textView: TextView = binding.textList
+        viewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root
