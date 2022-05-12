@@ -28,5 +28,6 @@
     <string name="signout">Signout</string>
     <string name="products">Products</string>
     <string name="add_product">Add Product</string>
+    <string name="create_product">CREATE PRODUCT</string>
 
 </resources>
