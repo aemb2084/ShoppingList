@@ -1,4 +1,4 @@
-package com.example.shoppinglist.RegisterLogin.ui
+package com.example.shoppinglist.registerLogin.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,22 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import com.example.shoppinglist.R
-import com.example.shoppinglist.SoppingListApp.ShoppingListActivity
+import com.example.shoppinglist.shoppingListApp.ShoppingListActivity
 import com.example.shoppinglist.databinding.RegisterLoginFragmentBinding
-import com.google.firebase.auth.FirebaseAuth
 
 class RegisterLoginFragment : Fragment(), View.OnClickListener {
 
-    private var TAG: String = "LogLoginFragment"
+    // private var TAG: String = "LogLoginFragment"
     val viewModel: RegisterLoginViewModel by viewModels()
     private var _binding: RegisterLoginFragmentBinding? = null
     private val binding get() = _binding!!
-    private lateinit var auth: FirebaseAuth
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = RegisterLoginFragmentBinding.inflate(inflater, container, false)
@@ -32,29 +27,29 @@ class RegisterLoginFragment : Fragment(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(false)
-        viewModel.register.observe(this, Observer<registerStatus>{ register ->
+        viewModel.register.observe(this) { register ->
             registerFeedback(register)
-        })
-        viewModel.login.observe(this, Observer<loginStatus>{ login ->
+        }
+        viewModel.login.observe(this) { login ->
             loginFeedback(login)
-        })
+        }
 
     }
     override fun onClick(v: View?) {
 
-        val myUser = credentials(
+        val myUser = Credentials(
             binding.email.text.toString(),
             binding.password.text.toString()
         )
 
         when(v?.id){
-            R.id.login -> viewModel.SignIn(myUser, getActivity())
-            R.id.signup -> viewModel.SignUp(myUser, getActivity())
+            R.id.login -> viewModel.signIn(myUser, activity)
+            R.id.signup -> viewModel.signUp(myUser, activity)
         }
 
     }
 
-    private fun registerFeedback(register: registerStatus){
+    private fun registerFeedback(register: RegisterStatus){
 
         if (register.status){
             Toast.makeText(context,getString(R.string.ConfirmEmail), Toast.LENGTH_LONG).show()
@@ -63,7 +58,7 @@ class RegisterLoginFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    private fun loginFeedback(login: loginStatus){
+    private fun loginFeedback(login: LoginStatus){
         if (login.status){
             Toast.makeText(context, getString(R.string.LoginSuccess), Toast.LENGTH_LONG).show()
             requireActivity().run {

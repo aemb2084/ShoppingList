@@ -1,4 +1,4 @@
-package com.example.shoppinglist.SoppingListApp
+package com.example.shoppinglist.shoppingListApp
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,7 +13,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.shoppinglist.R
-import com.example.shoppinglist.RegisterLogin.RegisterLogin
+import com.example.shoppinglist.registerLogin.RegisterLogin
 import com.example.shoppinglist.databinding.ActivityShoppingListBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -21,7 +21,7 @@ class ShoppingListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityShoppingListBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private var TAG: String = "LogsShoppingListActivity"
+//    private var TAG: String = "LogsShoppingListActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,13 +67,13 @@ class ShoppingListActivity : AppCompatActivity() {
         when(item.itemId){
 
             R.id.action_about -> { }
-            R.id.action_signout -> SignOut()
+            R.id.action_signout -> signOut()
 
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun SignOut(){
+    private fun signOut(){
         FirebaseAuth.getInstance().signOut()
         val intent = Intent(this, RegisterLogin::class.java).apply {  }
         startActivity(intent)

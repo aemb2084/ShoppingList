@@ -1,14 +1,13 @@
-package com.example.shoppinglist.SoppingListApp.ui.Products.CreateProduct
+package com.example.shoppinglist.shoppingListApp.ui.cart
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class CreateProductViewModel : ViewModel() {
+class CartViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is Create Product Fragment"
+        value = "This is cart Fragment"
     }
     val text: LiveData<String> = _text
-
 }

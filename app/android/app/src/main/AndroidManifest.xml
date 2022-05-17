@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingList">
         <activity
-            android:name=".SoppingListApp.ShoppingListActivity"
+            android:name=".shoppingListApp.ShoppingListActivity"
             android:exported="true"
             android:label="@string/title_activity_shopping_list"
             android:theme="@style/Theme.ShoppingList">
@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegisterLogin.RegisterLogin"
+            android:name=".registerLogin.RegisterLogin"
             android:exported="true"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.ShoppingList.NoActionBar">

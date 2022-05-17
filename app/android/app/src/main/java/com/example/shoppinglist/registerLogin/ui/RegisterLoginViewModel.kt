@@ -1,4 +1,4 @@
-package com.example.shoppinglist.RegisterLogin.ui
+package com.example.shoppinglist.registerLogin.ui
 
 import android.util.Log
 import androidx.fragment.app.FragmentActivity
@@ -14,38 +14,38 @@ class RegisterLoginViewModel : ViewModel() {
     private lateinit var auth: FirebaseAuth
 
 
-    val register: MutableLiveData<registerStatus> by lazy {
-        MutableLiveData<registerStatus>()
+    val register: MutableLiveData<RegisterStatus> by lazy {
+        MutableLiveData<RegisterStatus>()
     }
 
-    val login: MutableLiveData<loginStatus> by lazy{
-        MutableLiveData<loginStatus>()
+    val login: MutableLiveData<LoginStatus> by lazy{
+        MutableLiveData<LoginStatus>()
     }
 
-    fun SignUp(credentials: credentials, activity: FragmentActivity?){
+    fun signUp(credentials: Credentials, activity: FragmentActivity?){
 
         auth = Firebase.auth
-        activity?.let { activity ->
+        activity?.let { myActivity ->
             auth.createUserWithEmailAndPassword(credentials.email, credentials.password)
-                .addOnCompleteListener(activity) { task ->
+                .addOnCompleteListener(myActivity) { task ->
 
                     if (task.isSuccessful){
                         Log.i(TAG, "Successfully Singed Up: Token -> ${task.result.user?.uid}")
 
-                        lateinit var tempRegister: registerStatus
+                        lateinit var tempRegister: RegisterStatus
                         FirebaseAuth
                             .getInstance()
                             .currentUser
                             ?.sendEmailVerification()
-                            ?.addOnCompleteListener(){ task ->
-                                if (task.isSuccessful){
-                                    tempRegister = registerStatus(true,"Email sent.")
+                            ?.addOnCompleteListener { myTask ->
+                                if (myTask.isSuccessful){
+                                    tempRegister = RegisterStatus(true,"Email sent.")
                                     register.value = tempRegister
                                     Log.i(TAG, "Verification email sent Successfully.!")
                                 } else {
-                                    var splitedDetail = task.exception.toString()
-                                    var splitedDetailArr = splitedDetail.split(":")
-                                    tempRegister = registerStatus(false,splitedDetailArr.get(1))
+                                    val splitDetail = myTask.exception.toString()
+                                    val splitDetailArr = splitDetail.split(":")
+                                    tempRegister = RegisterStatus(false, splitDetailArr[1])
                                     register.value = tempRegister
                                     Log.i(TAG, "Fail to verification email.!")
                                 }
@@ -53,9 +53,9 @@ class RegisterLoginViewModel : ViewModel() {
 
                     } else {
                         Log.i(TAG, "Error Singed Up: ${task.exception}")
-                        var splitedDetail = task.exception.toString()
-                        var splitedDetailArr = splitedDetail.split(":")
-                        var tempRegister = registerStatus(false,splitedDetailArr.get(1))
+                        val splitDetail = task.exception.toString()
+                        val splitDetailArr = splitDetail.split(":")
+                        val tempRegister = RegisterStatus(false, splitDetailArr[1])
                         register.value = tempRegister
                     }
 
@@ -63,30 +63,30 @@ class RegisterLoginViewModel : ViewModel() {
         }
     }
 
-    fun SignIn(credentials: credentials, activity: FragmentActivity?){
+    fun signIn(credentials: Credentials, activity: FragmentActivity?){
 
         auth = Firebase.auth
         activity?.let {
             auth.signInWithEmailAndPassword(credentials.email, credentials.password)
                 .addOnCompleteListener(it){ task ->
                     if (task.isSuccessful){
-                        var user = FirebaseAuth.getInstance().currentUser
+                        val user = FirebaseAuth.getInstance().currentUser
                         if (user != null) {
-                            lateinit var tempLoginStatus: loginStatus
-                            var tempUser = user(
+                            lateinit var tempLoginStatus: LoginStatus
+                            val tempUser = User(
                                 auth.currentUser?.displayName.toString(),
                                 auth.currentUser?.email.toString(),
                                 auth.currentUser?.uid.toString()
                             )
-                            if (user.isEmailVerified){
+                            tempLoginStatus = if (user.isEmailVerified){
                                 Log.i(TAG, "Successfully Logged In:")
-                                tempLoginStatus = loginStatus(
+                                LoginStatus(
                                     true,
                                     task.result.toString(),
                                     tempUser
                                 )
                             } else {
-                                tempLoginStatus = loginStatus(
+                                LoginStatus(
                                     false,
                                     "Unverified email",
                                     tempUser
@@ -97,16 +97,16 @@ class RegisterLoginViewModel : ViewModel() {
 
                     } else {
                         Log.i(TAG, "Error Singed Up: ${task.exception}")
-                        var tempUser = user(
+                        val tempUser = User(
                             null,
                             null,
                             null
                         )
-                        var splitedDetail = task.exception.toString()
-                        var splitedDetailArr = splitedDetail.split(":")
-                        var tempLoginStatus = loginStatus(
+                        val splitDetail = task.exception.toString()
+                        val splitDetailArr = splitDetail.split(":")
+                        val tempLoginStatus = LoginStatus(
                             false,
-                            splitedDetailArr.get(1),
+                            splitDetailArr[1],
                             tempUser
                         )
                         login.value = tempLoginStatus

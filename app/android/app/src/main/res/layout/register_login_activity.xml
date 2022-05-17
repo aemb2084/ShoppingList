@@ -6,12 +6,12 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterLogin.RegisterLogin">
+    tools:context=".registerLogin.RegisterLogin">
 
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
-        android:name="com.example.shoppinglist.RegisterLogin.ui.RegisterLoginFragment"
+        android:name="com.example.shoppinglist.registerLogin.ui.RegisterLoginFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"

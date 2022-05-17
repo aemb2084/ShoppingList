@@ -1,4 +1,4 @@
-package com.example.shoppinglist.SoppingListApp.ui.Cart
+package com.example.shoppinglist.shoppingListApp.ui.lists
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,21 +7,21 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import com.example.shoppinglist.databinding.FragmentCartBinding
+import com.example.shoppinglist.shoppingListApp.ui.historical.HistoricalViewModel
+import com.example.shoppinglist.databinding.FragmentListBinding
 
-class CartFragment : Fragment() {
+class ListFragment : Fragment() {
 
-    private var _binding: FragmentCartBinding? = null
+    private var _binding: FragmentListBinding? = null
+    val viewModel by viewModels<HistoricalViewModel>()
     private val binding get() = _binding!!
-    val viewModel by viewModels<CartViewModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
-        _binding = FragmentCartBinding.inflate(inflater, container, false)
+        _binding = FragmentListBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
+        val textView: TextView = binding.textList
         viewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
