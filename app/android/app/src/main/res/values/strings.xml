@@ -29,5 +29,10 @@
     <string name="products">Products</string>
     <string name="add_product">Add Product</string>
     <string name="create_product">CREATE PRODUCT</string>
+    <string name="ProductTitle">Producto:</string>
+    <string name="ProductCategory">Categoría:</string>
+    <string name="PriceQualification">Precio:</string>
+    <string name="QualityQualification">Calidad:</string>
+    <string name="ProductProvider">Proveedor:</string>
 
 </resources>
