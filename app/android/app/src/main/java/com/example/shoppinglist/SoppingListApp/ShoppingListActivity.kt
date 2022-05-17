@@ -3,15 +3,13 @@ package com.example.shoppinglist.SoppingListApp
 import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.shoppinglist.R
@@ -22,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth
 class ShoppingListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityShoppingListBinding
+    private lateinit var appBarConfiguration: AppBarConfiguration
     private var TAG: String = "LogsShoppingListActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +32,7 @@ class ShoppingListActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_shopping_list)
+        appBarConfiguration = AppBarConfiguration(navController.graph)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
@@ -44,8 +44,6 @@ class ShoppingListActivity : AppCompatActivity() {
             )
         )
 
-
-
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
@@ -56,18 +54,13 @@ class ShoppingListActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        // super.onCreate(savedInstanceState, persistentState)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shopping_list)
-        val navHostFragment = findNavController(R.id.mobile_navigation)
-        // val navHostFragment = supportFragmentManager.findFragmentById(R.id.mobile_navigation) as NavHostFragment
-        //NavigationUI.setupActionBarWithNavController(this, navHostFragment.navController)
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = this.findNavController(R.id.mobile_navigation)
-        return navController.navigateUp()
+        val navController = this.findNavController(R.id.nav_host_fragment_activity_shopping_list)
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
