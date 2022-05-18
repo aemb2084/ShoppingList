@@ -18,11 +18,12 @@
         android:padding="4dp">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/ProductImage"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@mipmap/ic_launcher"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="@string/ProductImageDescription"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,7 +36,7 @@
             android:paddingRight="4dp"
             android:paddingBottom="4dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/ProductImage"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
@@ -60,7 +61,7 @@
             android:paddingRight="4dp"
             android:paddingBottom="4dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/ProductImage"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
             <TextView
@@ -85,7 +86,7 @@
             android:paddingRight="4dp"
             android:paddingBottom="4dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/ProductImage"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
             <TextView
@@ -110,7 +111,7 @@
             android:paddingRight="4dp"
             android:paddingBottom="4dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/ProductImage"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
             <TextView
@@ -119,82 +120,95 @@
                 android:text="@string/PriceQualification"
                 android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/ProductPriceStar1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="1dp"
-                android:src="@drawable/ic_baseline_attach_money_24" />
-
-            <ImageView
-                android:id="@+id/ProductPriceStar2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="1dp"
-                android:src="@drawable/ic_baseline_attach_money_24" />
-
-            <ImageView
-                android:id="@+id/ProductPriceStar3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="1dp"
-                android:src="@drawable/ic_baseline_attach_money_24" />
+           <TextView
+               android:id="@+id/ProductPrice"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingLeft="4dp"
             android:paddingRight="4dp"
             android:paddingBottom="4dp"
+            android:gravity="center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/ProductImage"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
             <TextView
-                android:layout_width="75dp"
+                android:layout_width="79dp"
                 android:layout_height="wrap_content"
-                android:text="@string/QualityQualification"
+                android:text="@string/ProductScore"
                 android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/ProductQualityStar1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="4dp"
-                android:src="@drawable/ic_baseline_star_24"/>
+                android:paddingStart="4dp"
+                android:contentDescription="@string/FirstStar"
+                android:src="@drawable/ic_baseline_star_24"
+                tools:ignore="RtlSymmetry" />
 
             <ImageView
                 android:id="@+id/ProductQualityStar2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="4dp"
-                android:src="@drawable/ic_baseline_star_24"/>
+                android:paddingStart="4dp"
+                android:contentDescription="@string/SecondStar"
+                android:src="@drawable/ic_baseline_star_24"
+                tools:ignore="RtlSymmetry" />
 
             <ImageView
                 android:id="@+id/ProductQualityStar3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="4dp"
-                android:src="@drawable/ic_baseline_star_24"/>
+                android:paddingStart="4dp"
+                android:contentDescription="@string/ThirdStar"
+                android:src="@drawable/ic_baseline_star_24"
+                tools:ignore="RtlSymmetry" />
 
             <ImageView
                 android:id="@+id/ProductQualityStar4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="4dp"
-                android:src="@drawable/ic_baseline_star_24"/>
+                android:paddingStart="4dp"
+                android:contentDescription="@string/FourthStar"
+                android:src="@drawable/ic_baseline_star_24"
+                tools:ignore="RtlSymmetry" />
 
             <ImageView
                 android:id="@+id/ProductQualityStar5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="4dp"
-                android:src="@drawable/ic_baseline_star_24"/>
+                android:paddingStart="4dp"
+                android:contentDescription="@string/FifthStar"
+                android:src="@drawable/ic_baseline_star_24"
+                tools:ignore="RtlSymmetry" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/ProductObservations"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
+
+        <TextView
+            android:id="@+id/ProductObservations"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/textView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

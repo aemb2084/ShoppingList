@@ -32,7 +32,14 @@
     <string name="ProductTitle">Producto:</string>
     <string name="ProductCategory">Categoría:</string>
     <string name="PriceQualification">Precio:</string>
-    <string name="QualityQualification">Calidad:</string>
+    <string name="ProductScore">Calificación:</string>
     <string name="ProductProvider">Proveedor:</string>
+    <string name="ProductObservations">Observaciones:</string>
+    <string name="FirstStar">First star.</string>
+    <string name="SecondStar">Second star.</string>
+    <string name="ThirdStar">Third star.</string>
+    <string name="FourthStar">Fourth star.</string>
+    <string name="FifthStar">Fifth star.</string>
+    <string name="ProductImageDescription">Product description.</string>
 
 </resources>
