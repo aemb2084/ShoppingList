@@ -21,7 +21,7 @@ class ProductsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val scoreStar5 = view.findViewById(R.id.ProductQualityStar5) as ImageView
     val productObservation = view.findViewById(R.id.ProductObservations) as TextView
 
-    fun bind (product: ProductsModel, context: Context){
+    fun bind (product: ProductsModels, context: Context){
         productTitle.text = product.title
     }
 

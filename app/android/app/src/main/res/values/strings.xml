@@ -41,5 +41,8 @@
     <string name="FourthStar">Fourth star.</string>
     <string name="FifthStar">Fifth star.</string>
     <string name="ProductImageDescription">Product description.</string>
+    <string name="ProductPrice">Precio:</string>
+    <string name="ProductDescription">Descripción:</string>
+    <string name="SaveProduct">GUARDAR PRODUCTO</string>
 
 </resources>

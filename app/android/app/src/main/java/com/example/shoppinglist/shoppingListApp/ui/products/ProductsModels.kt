@@ -1,6 +1,6 @@
 package com.example.shoppinglist.shoppingListApp.ui.products
 
-data class ProductsModel(
+data class ProductsModels(
 
     val pictureUrl: String,
     val title: String,
@@ -10,4 +10,9 @@ data class ProductsModel(
     val qualification: Int,
     val observations: String
 
+)
+
+data class ProductMenus(
+    val categoryList: List<String>,
+    val providerList: List<String>
 )
