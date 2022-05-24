@@ -44,5 +44,6 @@
     <string name="ProductPrice">Precio:</string>
     <string name="ProductDescription">Descripción:</string>
     <string name="SaveProduct">GUARDAR PRODUCTO</string>
+    <string name="saveProduct">Guardar</string>
 
 </resources>

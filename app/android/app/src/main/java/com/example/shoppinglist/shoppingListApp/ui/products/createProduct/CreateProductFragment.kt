@@ -1,11 +1,8 @@
 package com.example.shoppinglist.shoppingListApp.ui.products.createProduct
 
 import android.os.Bundle
-import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
@@ -15,8 +12,6 @@ import androidx.navigation.Navigation
 import com.example.shoppinglist.R
 import com.example.shoppinglist.databinding.FragmentCreateProductBinding
 import com.example.shoppinglist.shoppingListApp.ui.products.ProductMenus
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 
 class CreateProductFragment : Fragment(), View.OnClickListener {
 
@@ -69,6 +64,8 @@ class CreateProductFragment : Fragment(), View.OnClickListener {
 
         viewModel.Init()
 
+        setHasOptionsMenu(true)
+
         viewModel.menus.observe(this){ menus ->
             StartCreatingProduct(menus)
         }
@@ -77,6 +74,24 @@ class CreateProductFragment : Fragment(), View.OnClickListener {
             Rate(rate)
         }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_create_product, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId){
+            R.id.save_product -> saveProduct()
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun saveProduct(){
+        Toast.makeText(context, "prueba guardar ${categoryOptions.text}", Toast.LENGTH_LONG).show()
+        // TODO> Completar acción de enviar información haci firebase.
     }
 
     fun StartCreatingProduct(menus: ProductMenus){
