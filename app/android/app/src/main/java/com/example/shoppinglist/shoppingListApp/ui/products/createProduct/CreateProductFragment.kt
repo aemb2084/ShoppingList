@@ -22,6 +22,7 @@ class CreateProductFragment : Fragment(), View.OnClickListener {
     private var navController: NavController? = null
     private var categoryList: List<String> = emptyList()
     private var providersList: List<String> = emptyList()
+    private var rate: Int = 0
     private lateinit var progressBar: ProgressBar
     private lateinit var categoryOptions: AutoCompleteTextView
     private lateinit var providerOptions: AutoCompleteTextView
@@ -76,19 +77,6 @@ class CreateProductFragment : Fragment(), View.OnClickListener {
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_create_product, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        when(item.itemId){
-            R.id.save_product -> saveProduct()
-        }
-
-        return super.onOptionsItemSelected(item)
-    }
-
     fun saveProduct(){
         Toast.makeText(context, "prueba guardar ${categoryOptions.text}", Toast.LENGTH_LONG).show()
         // TODO> Completar acción de enviar información haci firebase.
@@ -123,6 +111,7 @@ class CreateProductFragment : Fragment(), View.OnClickListener {
     fun Rate(rate: Int){
        when(rate){
            1 -> {
+               this.rate = 1
                rateStar1.setImageResource(R.drawable.ic_baseline_star_24)
                rateStar2.setImageResource(R.drawable.ic_baseline_star_border_24)
                rateStar3.setImageResource(R.drawable.ic_baseline_star_border_24)
@@ -130,6 +119,7 @@ class CreateProductFragment : Fragment(), View.OnClickListener {
                rateStar5.setImageResource(R.drawable.ic_baseline_star_border_24)
            }
            2 -> {
+               this.rate = 2
                rateStar1.setImageResource(R.drawable.ic_baseline_star_24)
                rateStar2.setImageResource(R.drawable.ic_baseline_star_24)
                rateStar3.setImageResource(R.drawable.ic_baseline_star_border_24)
@@ -137,6 +127,7 @@ class CreateProductFragment : Fragment(), View.OnClickListener {
                rateStar5.setImageResource(R.drawable.ic_baseline_star_border_24)
            }
            3 -> {
+               this.rate = 3
                rateStar1.setImageResource(R.drawable.ic_baseline_star_24)
                rateStar2.setImageResource(R.drawable.ic_baseline_star_24)
                rateStar3.setImageResource(R.drawable.ic_baseline_star_24)
@@ -144,6 +135,7 @@ class CreateProductFragment : Fragment(), View.OnClickListener {
                rateStar5.setImageResource(R.drawable.ic_baseline_star_border_24)
            }
            4 -> {
+               this.rate = 4
                rateStar1.setImageResource(R.drawable.ic_baseline_star_24)
                rateStar2.setImageResource(R.drawable.ic_baseline_star_24)
                rateStar3.setImageResource(R.drawable.ic_baseline_star_24)
@@ -151,6 +143,7 @@ class CreateProductFragment : Fragment(), View.OnClickListener {
                rateStar5.setImageResource(R.drawable.ic_baseline_star_border_24)
            }
            5 -> {
+               this.rate = 5
                rateStar1.setImageResource(R.drawable.ic_baseline_star_24)
                rateStar2.setImageResource(R.drawable.ic_baseline_star_24)
                rateStar3.setImageResource(R.drawable.ic_baseline_star_24)
@@ -168,6 +161,19 @@ class CreateProductFragment : Fragment(), View.OnClickListener {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_create_product, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId){
+            R.id.save_product -> saveProduct()
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
 }
